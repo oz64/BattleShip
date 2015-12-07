@@ -31,13 +31,9 @@ Table.prototype.createTable = function(){
  */
 Table.prototype.displayTable = function(){
     for(var row = 0; row < this.sizeTable; row++)
-    {
-        //for(var col = 0; col < this.sizeTable; col++)
-        //{
         console.log(this.cell[row]);
-        //}
-    }
-}
+};
+
 /**
  * This function is to createships
  */
@@ -133,3 +129,30 @@ Table.prototype.getLetter = function (index){
     var abcd = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
     return abcd[index];
 }
+
+
+/*************************/
+Table.prototype.init = function()
+{
+    for (var fil = 0 ; fil < this.sizeTable; fil++)
+    {
+        this.cells[fil] = [];
+        for (var col=0; col < this.size; col++)
+            this.cells[fil][col] = this.emptyCell;
+    }
+};
+
+
+
+Table.prototype.createShips = function(ships){
+    this.ships.push(new Ship(2));
+
+};
+
+Table.prototype.drawShips = function(){
+    var shipSize = this.ships[0].sizeTable;
+    var initPs = Math.round(Math.random() * this.size);
+    var size = this.size - shipSize;
+    for (var i = initPs; i < (initPs - shipSize); i++)
+        this.cells[0][i] = '1';
+};
