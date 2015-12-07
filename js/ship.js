@@ -1,9 +1,23 @@
 /**
- * Created by oscardelgadillo on 11/20/2015.
+ * Created by MARIA on 04/12/2015.
  */
 var Ship = function(size){
-    this.state = 'ALIVE';
-    this.size = size;
-    this.direcction = '';
-
+    this.sizeShip = size;
+    this.orientaton = '';
+    this.State = 'live';
+    this.Cell = [];
+    //this.createShip();
+    this.createNewShip();//es necesario???
 };
+/**
+ * este metodo solo es para prueba
+ * @constructor
+ */
+Ship.prototype.createNewShip = function(){
+    for(var i = 0; i < this.sizeShip; i++)
+    {
+        this.Cell[i] = '0';
+    }
+
+}
+
