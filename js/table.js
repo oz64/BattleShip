@@ -90,7 +90,7 @@ Table.prototype.setShipsOnTable = function(){
         console.log('H'+pos);
         if(coorY + this.Ships[indexShip].sizeShip <= this.sizeTable)
         {
-            this.fillTable(coorX,coorY,indexShip,pos);
+            this.fillShips(coorX,coorY,indexShip,pos);
             indexShip++;
         }
     }
@@ -102,7 +102,7 @@ Table.prototype.setShipsOnTable = function(){
  * THis functions fill a ship in the table
  * @constructor
  */
-Table.prototype.fillTable = function (coorX, coorY, indexShip, pos) {
+Table.prototype.fillShips = function (coorX, coorY, indexShip, pos) {
 
     var sizeShip = this.Ships[indexShip].sizeShip;
     if(pos == 0)
