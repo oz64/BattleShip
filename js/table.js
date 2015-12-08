@@ -83,12 +83,24 @@ Table.prototype.setShipsOnTable = function(){
     do
     {
         var orientation = Math.round(Math.random()*1);
-        var coorX = Math.round(Math.random() * (t.sizeTable - 1));
-        var coorY = Math.round(Math.random() * (t.sizeTable - 1));
-        if((coorY + this.Ships[indexShip].sizeShip) <= this.sizeTable)
+        var coorX = Math.round(Math.random() * (this.sizeTable - 1));
+        var coorY = Math.round(Math.random() * (this.sizeTable - 1));
+
+        if(orientation==1 && coorX + this.Ships[indexShip].sizeShip <= this.sizeTable )
         {
-            console.log(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation));
-            indexShip++;
+            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true);
+            {
+                this.fillShips(coorX,coorY,indexShip,orientation);
+                indexShip++;
+            }
+        }
+        if(orientation == 0 && coorY + this.Ships[indexShip].sizeShip <= this.sizeTable)
+        {
+            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true);
+            {
+                this.fillShips(coorX,coorY,indexShip,orientation);
+                indexShip++;
+            }
         }
 
     }
@@ -96,11 +108,18 @@ Table.prototype.setShipsOnTable = function(){
 }
 Table.prototype.verifyOverDraw = function(coorX,coorY,sizeS,orientation){
     var counter = 0;
-    for(var i = 1; i <= sizeS; i++)
+    for(var i = 0; i < sizeS; i++)
     {
         if(this.cell[coorX][coorY] == '0')
         {
             counter++;
+            if(orientation == 1)
+                coorX++;
+            else
+                coorY++;
+        }
+        else
+        {
             if(orientation == 1)
                 coorX++;
             else
@@ -111,6 +130,22 @@ Table.prototype.verifyOverDraw = function(coorX,coorY,sizeS,orientation){
         return true;
     else
         return false;
+}
+Table.prototype.fillShips = function (coorX,coorY,indexS,orientation){
+    if(orientation==0)
+        this.Ships[indexS].orientaton = 'H';
+    else
+        this.Ships[indexS].orientaton = 'V';
+    for(var i = 0; i < this.Ships[indexS].sizeShip; i++)
+    {
+        this.cell[coorX][coorY] = indexS+1;
+
+        this.Ships[indexS].Cell[i] = coorX+''+coorY;
+        if(orientation == 1)
+            coorX++;
+        else
+            coorY++;
+    }
 }
 //Table.prototype.setShipsOnTable = function(){
 //
