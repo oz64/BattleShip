@@ -4,16 +4,13 @@
 
 /**
  *
- * @param numero
+ * @param number
  * @returns {boolean}
  */
 
-
-
-
-function isNumber(numero){
+function isNumber(number){
     var resp = true;
-    if (!/^([0-9])*$/.test(numero))
+    if (!/^([0-9])*$/.test(number))
         resp = false;
     return resp;
 };
@@ -48,5 +45,22 @@ var validatingEmptyField = function(str) {
             flag = true;
     }while (flag != true);
     return reply;
+};
+
+var validatingCoordinates = function(coordinate, sizetable)
+{
+    var flag;
+    var number;
+    do{
+        number = prompt('Insert coordinate ' + coordinate);
+        flag = isNumber(number);
+        if (!flag)
+            alert('Insert only numbers please.');
+        if (flag && number > sizetable) {
+            alert('You can not exceed the limit of board');
+            flag = false;
+        }
+    }while (flag != true);
+    return number;
 };
 
