@@ -7,5 +7,6 @@ var Player = function(name, sizeTable){
     console.log('Table for the player: ',this.name);
     this.field.displayTable();
 
+    this.shot = new Shot(sizeTable);
 
 };
