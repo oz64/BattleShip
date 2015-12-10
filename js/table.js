@@ -9,6 +9,7 @@ function Table(sTable){
     this.cell = [];
     this.Ships = [];
     this.createTable();
+  //  this.createShips();
 
 }
 /**
@@ -43,16 +44,16 @@ Table.prototype.displayTable = function(){
  */
 Table.prototype.createShips = function(){
     console.log('empezo');
-    var cantShips = 0;
+    var indexShips = 0;
     var cantFill = (Math.pow(this.sizeTable,2)*0.4 ).toFixed();
     do// for(var i = 1; i <= cantFill ; i++)
     {
-        var sizeTableShip = this.createNumber(this.sizeTable);
-        this.Ships[cantShips] = new Ship(sizeTableShip);
-        cantFill = cantFill - sizeTableShip;
-        cantShips++;
+        var sizeShip =  Math.floor((Math.random() * 3) + 1);
+        this.Ships[indexShips] = new Ship(sizeShip);
+        cantFill = cantFill - sizeShip;
+        indexShips++;
     }
-    while(cantFill > 0)
+    while(cantFill >= 0)
     console.log('termino');
 }
 /**
@@ -69,15 +70,7 @@ Table.prototype.displayShips = function () {
  * that is not matter for this application still
  * @returns {number}
  */
-Table.prototype.createNumber = function (){
-    var number = 0;
-    do
-    {
-        number = Math.floor((Math.random() * 3) + 1);
-    }
-    while(number > 3);
-    return number;
-}
+//
 Table.prototype.setShipsOnTable = function(){
     var indexShip = 0;
     do
@@ -88,7 +81,7 @@ Table.prototype.setShipsOnTable = function(){
 
         if(orientation==1 && coorX + this.Ships[indexShip].sizeShip <= this.sizeTable )
         {
-            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true);
+            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true)
             {
                 this.fillShips(coorX,coorY,indexShip,orientation);
                 indexShip++;
@@ -96,7 +89,7 @@ Table.prototype.setShipsOnTable = function(){
         }
         if(orientation == 0 && coorY + this.Ships[indexShip].sizeShip <= this.sizeTable)
         {
-            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true);
+            if(this.verifyOverDraw(coorX,coorY,this.Ships[indexShip].sizeShip,orientation)==true)
             {
                 this.fillShips(coorX,coorY,indexShip,orientation);
                 indexShip++;
@@ -105,7 +98,7 @@ Table.prototype.setShipsOnTable = function(){
 
     }
     while(indexShip < this.Ships.length);
-}
+};
 Table.prototype.verifyOverDraw = function(coorX,coorY,sizeS,orientation){
     var counter = 0;
     for(var i = 0; i < sizeS; i++)
@@ -119,18 +112,19 @@ Table.prototype.verifyOverDraw = function(coorX,coorY,sizeS,orientation){
                 coorY++;
         }
         else
-        {
-            if(orientation == 1)
-                coorX++;
-            else
-                coorY++;
-        }
+            return false;
+        //{
+        //    if(orientation == 1)
+        //        coorX++;
+        //    else
+        //        coorY++;
+        //}
     }
     if(counter == sizeS)
         return true;
     else
         return false;
-}
+};
 Table.prototype.fillShips = function (coorX,coorY,indexS,orientation){
     if(orientation==0)
         this.Ships[indexS].orientaton = 'H';
@@ -140,13 +134,13 @@ Table.prototype.fillShips = function (coorX,coorY,indexS,orientation){
     {
         this.cell[coorX][coorY] = indexS+1;
 
-        this.Ships[indexS].Cell[i] = coorX+''+coorY;
+        this.Ships[indexS].Cell[i] = coorX + ',' + coorY;
         if(orientation == 1)
             coorX++;
         else
             coorY++;
     }
-}
+};
 //Table.prototype.setShipsOnTable = function(){
 //
 //    var indexShip = 0;

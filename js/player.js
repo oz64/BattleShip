@@ -5,8 +5,9 @@ var Player = function(name, sizeTable){
     this.name = name;
     this.field = new Table(sizeTable);
     console.log('Table for the player: ',this.name);
-    this.field.displayTable();
 
+    this.field.setShipsOnTable();
+    this.field.displayTable();
     this.shot = new Shot(sizeTable);
 
 };

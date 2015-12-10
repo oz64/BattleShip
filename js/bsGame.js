@@ -13,7 +13,14 @@ var BSGame = function(){
         var name2 = validatingEmptyField('Insert name for player 2');
         this.players.push(new Player(name1, sizeTable));
         this.players.push(new Player(name2, sizeTable));
+        do
+        {
+
+
+        }
+        while();
     };
+
 };
 
 
