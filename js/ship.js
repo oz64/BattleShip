@@ -4,20 +4,17 @@
 var Ship = function(size){
     this.sizeShip = size;
     this.orientaton = '';
-    this.State = 'live';
+    this.state = 'live';
     this.Cell = [];
-    //this.createShip();
-    this.createNewShip();//es necesario???
+    //this.createNewShip();//es necesario???
 };
 /**
  * este metodo solo es para prueba
  * @constructor
  */
-Ship.prototype.createNewShip = function(){
-    for(var i = 0; i < this.sizeShip; i++)
-    {
-        this.Cell[i] = '0';
-    }
+//Ship.prototype.createNewShip = function(){
+//    for(var i = 0; i < this.sizeShip; i++)
+//        this.Cell[i] = '0';
+//};
 
-}
 

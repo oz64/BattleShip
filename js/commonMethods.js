@@ -56,7 +56,7 @@ var validatingCoordinates = function(coordinate, sizetable)
         flag = isNumber(number);
         if (!flag)
             alert('Insert only numbers please.');
-        if (flag && number > sizetable) {
+        if (flag && number >= sizetable) {
             alert('You can not exceed the limit of board');
             flag = false;
         }

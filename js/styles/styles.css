@@ -1,0 +1,15 @@
+
+.table
+{
+    border: solid blue 2px;
+}
+
+
+.cell
+{
+    display: inline-block;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+}
+

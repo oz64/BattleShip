@@ -13,9 +13,11 @@ var Shot = function(sTable){
         this.y = validatingCoordinates('Y',this.sizeTable);
     };
 
-    this.makeShot = function(){
+    this.makeShot = function(player){
         console.log('X:',this.x);
         console.log('Y:',this.y);
+        //this.players[player].field.shot2ship(this.x, this.y);
+        this.field.shot2ship(this.x, this.y);
     };
 };
 
