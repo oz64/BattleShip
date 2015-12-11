@@ -18,45 +18,28 @@ var Ship = function(size){
 //};
 
 
-Table.prototype.shot2ship = function(positionX, positionY)
-{
-    if (this.cell[positionX][positionY] != '0')
+Ship.prototype.shotShip = function(coorX,coorY){
+    for(var i =0; i < this.sizeShip; i++)
     {
-        var s = this.cell[positionX][positionY];
-        this.Ships[s-1].shotShip(positionX,positionY);
-        this.cell[positionX][positionY] = 'X';
+        if(this.Cell[i] == coorX + ',' + coorY)
+        {
+            this.Cell[i] = 'X';
+            if(this.getState()==true)
+                this.state = 'hurt';
+            else
+                this.state = 'killed';
+        }
     }
-    else
-    {
-        alert('Shot missed.');
-        this.cell[positionX][positionY] = 'X';
-    }
-
 };
-
-Table.prototype.drawTable = function () {
-    var w = this.sizeTable * 50;
-    //var styleStr  =  '<style>' +
-    //    '.cell {background: green; width: 50px; height: 50px; display: inline-block;}' +
-    //    '.container {background-color: red; width: '+w +'px;}' +
-    //    '</style>';
-
-    var containerStr = '<div class = "table" style="width: '+w+'px;"></div>';
-    var cellStr = '<div class = "cell"></div>';
-
-    var containerEl = $(containerStr); //html element
-    //var styleEl = $(styleStr);
-
-    for(var i = 0, total = this.sizeTable * this.sizeTable; i < total; i++){
-        var cellEl = $(cellStr);
-        cellEl.on('click',function(e){
-            console.log(e);
-            console.log('you clicked on a cell');
-            $(e.target).css('background','yellow');
-
-        });
-        containerEl.append(cellEl);
+Ship.prototype.getState = function(){
+    var state = true;
+    var countHurt = 0;
+    for(var i =0; i < this.sizeShip; i++)
+    {
+        if(this.Cell[i] == 'X')
+            countHurt++;
     }
-    //$('body').html(styleEl);
-    $('body').append(containerEl);
+    if(countHurt == this.sizeShip)
+        state = false;
+    return state;
 };
