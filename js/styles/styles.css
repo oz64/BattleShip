@@ -1,15 +1,36 @@
 
 .table
 {
-    border: solid blue 2px;
+    border: solid blue 3px;
+    float: left;
+    margin: 22px;
+}
+
+.bsgBox
+{
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: auto;
+    margin-top: -300px;
+    margin-left: -400px;
+    background: yellowgreen;
+    position: absolute;
 }
 
 
 .cell
 {
-    display: inline-block;
+    /*display: inline-block;*/
+    float: left;
     background-color: red;
-    width: 50px;
-    height: 50px;
+    /*width: 20px;
+    height: 20px;
+    border-style: outset;*/
+    border: solid black 1px;
 }
 
+element.style {
+    width: 228px;
+    left: 400px;
+}

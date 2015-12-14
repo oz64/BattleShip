@@ -9,7 +9,7 @@ function Table(sTable){
     this.cell = [];
     this.Ships = [];
     this.createTable();
-    this.drawTable();
+    //this.drawTable();
 }
 /**
  * function for create a new table dynamically
@@ -135,40 +135,57 @@ Table.prototype.shot2ship = function(positionX, positionY)
         var s = this.cell[positionX][positionY];
         this.Ships[s-1].shotShip(positionX,positionY);
         this.cell[positionX][positionY] = 'X';
+        return true;
     }
     else
     {
-        alert('Shot missed.');
         this.cell[positionX][positionY] = 'X';
+        return false;
     }
 
 };
 
-Table.prototype.drawTable = function () {
-    var w = this.sizeTable * 50;
+function shotOnTable(e){
+    var valueId = $(this).attr("data-playerId");
+    var x = $(this).attr("data-coorX");
+    var y = $(this).attr("data-coorY");
+    if(bsg.getTurn(valueId, x,y, e))
+    {
+        //$(e.target).css('background','yellow');
+    }
+
+}
+
+Table.prototype.drawTable = function (playerId) {
+    //var w = this.sizeTable * 27;
+    var w = 350;
     //var styleStr  =  '<style>' +
     //    '.cell {background: green; width: 50px; height: 50px; display: inline-block;}' +
     //    '.container {background-color: red; width: '+w +'px;}' +
     //    '</style>';
 
-    var containerStr = '<div class = "table" style="width: '+w+'px;"></div>';
-    var cellStr = '<div class = "cell"></div>';
+    var containerStr = '<div id="'+playerId+'" class = "table" style="width: '+w+'px;"></div>';
+    //var cellStr = '<div class = "cell"></div>';
 
     var containerEl = $(containerStr); //html element
     //var styleEl = $(styleStr);
 
-    for(var i = 0, total = this.sizeTable * this.sizeTable; i < total; i++){
-        var cellEl = $(cellStr);
-        cellEl.on('click',function(e){
-            console.log(e);
-            console.log('you clicked on a cell');
-            $(e.target).css('background','yellow');
-
-        });
-        containerEl.append(cellEl);
+    //for(var i = 0, total = this.sizeTable * this.sizeTable; i < total; i++){
+    for(var i = 0, total = this.sizeTable ; i < total; i++){
+        //var cellEl = $(cellStr);
+        for(var j = 0; j < this.sizeTable; j++){
+            var cellEl = $('<div class = "cell" id="'+playerId+'-'+i+','+j+'" data-playerId ="'+playerId+'" data-coorX="'+i+'" data-coorY="'+j+'" ></div>');
+            cellEl.on('click',shotOnTable);
+            containerEl.append(cellEl);
+        }
     }
     //$('body').html(styleEl);
-    $('body').append(containerEl);
+    $('.bsgBox').append(containerEl);
+
+    $('.cell').css('width',w/this.sizeTable-2);
+    $('.cell').css('height',w/this.sizeTable-2);
 };
+
+
 
 
