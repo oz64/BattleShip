@@ -15,22 +15,42 @@ var BSGame = function(){
         this.players.push(new Player(0, name1, sizeTable));
         this.players.push(new Player(1, name2, sizeTable));
 
-
-
-
-
-        //this.players[1].shot.askCoordinates();
-        //this.players[1].shot.makeShot(0);
-
-        //like a player 1
-        //this.players[1].shot.askCoordinates();
-        //this.players[1].field.shot2ship(this.players[1].shot.x, this.players[1].shot.y);
-        //this.players[1].field.displayTable(name2);
-        //
-        //this.players[0].shot.askCoordinates();
-        //this.players[0].field.shot2ship(this.players[0].shot.x, this.players[0].shot.y);
-        //this.players[0].field.displayTable(name1);
     };
 };
+
+BSGame.prototype.getTurn = function (playerId, x, y, e) {
+
+    if(this.turn == playerId)
+    {
+        alert('Rayos y centellas Batman');
+        return false;
+    }
+    else
+    {
+        if(this.players[playerId].field.shot2ship(x, y))
+        {
+            $(e.target).css('background-image','url("js/styles/shot.jpg")');
+            $(e.target).css('background-size','contain');
+            $(e.target).off('click');
+        }
+        else
+        {
+            $(e.target).css('background-image','url("js/styles/water.png")');
+            $(e.target).css('background-size','contain');
+            $(e.target).off('click');
+        }
+
+
+
+        if(this.turn == '1')
+            this.turn = '0';
+        else
+            this.turn = '1';
+
+        return true;
+    }
+};
+
+
 
 
