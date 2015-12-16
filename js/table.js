@@ -182,6 +182,7 @@ Table.prototype.drawTable = function (playerId) {
     //$('body').html(styleEl);
     $('.bsgBox').append(containerEl);
 
+
     $('.cell').css('width',w/this.sizeTable-2);
     $('.cell').css('height',w/this.sizeTable-2);
 };

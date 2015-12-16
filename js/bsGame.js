@@ -16,6 +16,7 @@ var BSGame = function(){
         this.players.push(new Player(1, name2, sizeTable));
 
     };
+
 };
 
 BSGame.prototype.getTurn = function (playerId, x, y, e) {
