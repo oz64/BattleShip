@@ -64,3 +64,8 @@ var validatingCoordinates = function(coordinate, sizetable)
     return number;
 };
 
+var displayWinner = function(winner){
+
+
+};
+

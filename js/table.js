@@ -149,10 +149,11 @@ function shotOnTable(e){
     var valueId = $(this).attr("data-playerId");
     var x = $(this).attr("data-coorX");
     var y = $(this).attr("data-coorY");
-    if(bsg.getTurn(valueId, x,y, e))
-    {
-        //$(e.target).css('background','yellow');
-    }
+    bsg.getTurn(valueId, x,y, e);
+    //if(bsg.getTurn(valueId, x,y, e))
+    //{
+    //    //$(e.target).css('background','yellow');
+    //}
 
 }
 

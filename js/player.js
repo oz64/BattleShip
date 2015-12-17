@@ -13,8 +13,20 @@ var Player = function(id, name, sizeTable){
     this.field.drawTable(this.idPlayer);
 
     this.insertName(id+1);
+
+    this.isDeadPlayer = function(){
+        var flag = true;
+
+        for (var index = 0; index < this.field.Ships.length; index++)
+        {
+            if (this.field.Ships[index].state == 'hurt' || this.field.Ships[index].state == 'live')
+                flag = false;
+        }
+        return flag;
+    };
 };
 
 Player.prototype.insertName = function(id) {
     $("#p"+id+"").append('<h2>'+ this.name +'</h2>');
 };
+

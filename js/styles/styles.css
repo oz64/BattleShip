@@ -46,3 +46,9 @@ element.style {
     width: 228px;
     left: 400px;
 }
+
+.contentWinner
+{
+    margin-top: 420px;
+    display: inline-flex;
+}

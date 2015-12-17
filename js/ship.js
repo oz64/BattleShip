@@ -8,16 +8,12 @@ var Ship = function(size){
     this.Cell = [];
     //this.createNewShip();//es necesario???
 };
+
 /**
- * este metodo solo es para prueba
- * @constructor
+ *
+ * @param coorX
+ * @param coorY
  */
-//Ship.prototype.createNewShip = function(){
-//    for(var i = 0; i < this.sizeShip; i++)
-//        this.Cell[i] = '0';
-//};
-
-
 Ship.prototype.shotShip = function(coorX,coorY){
     for(var i =0; i < this.sizeShip; i++)
     {
@@ -31,6 +27,11 @@ Ship.prototype.shotShip = function(coorX,coorY){
         }
     }
 };
+
+/**
+ *
+ * @returns {boolean}
+ */
 Ship.prototype.getState = function(){
     var state = true;
     var countHurt = 0;
