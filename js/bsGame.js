@@ -9,11 +9,20 @@ var BSGame = function(){
 
 
     this.start = function (){
-        var sizeTable = validatingSizeTable();
-        var name1 = validatingEmptyField('Insert name for player 1');
-        var name2 = validatingEmptyField('Insert name for player 2');
-        this.players.push(new Player(0, name1.toUpperCase(), sizeTable));
-        this.players.push(new Player(1, name2.toUpperCase(), sizeTable));
+
+        var url = location.search.substr(1).split("&");
+        for (var i = 0, total = url.length; i < total; i ++)
+            window[url[i].split("=")[0]] = url[i].split("=")[1];
+
+        //var sizeTable = validatingSizeTable();
+        //var name1 = validatingEmptyField('Insert name for player 1');
+        //var name2 = validatingEmptyField('Insert name for player 2');
+        //this.players.push(new Player(0, name1.toUpperCase(), sizeTable));
+        //this.players.push(new Player(1, name2.toUpperCase(), sizeTable));
+
+        var sizeTable = gameSize;
+        this.players.push(new Player(0, p1Name.toUpperCase(), sizeTable));
+        this.players.push(new Player(1, p2Name.toUpperCase(), sizeTable));
 
     };
 
@@ -27,19 +36,22 @@ BSGame.prototype.getTurn = function (playerId, x, y, e) {
     }
     else {
         if (this.players[playerId].field.shot2ship(x, y)) {
-            $(e.target).css('background-image', 'url("js/styles/shot.jpg")');
+            $(e.target).css('background-image', 'url("js/styles/buque.jpg")');
             $(e.target).css('background-size', 'contain');
             $(e.target).off('click');
 
             if (this.players[playerId].isDeadPlayer()) {
-                alert('PLAYER ' + this.players[this.turn].name + ' WIN...!!!');
+                //alert('PLAYER ' + this.players[this.turn].name + ' WIN...!!!');
                 $('.cell').off('click');
-                var tmp = $('<h2>'+ this.players[this.turn].name + " IS WINNER" + '</h2>');
+                var tmp = $('<h2>'+ this.players[this.turn].name + " IS THE WINNER" + '</h2>');
                 $('.contentWinner').append(tmp);
+                var scr = "location.href='http://localhost:63342/BattleShip/index.html'";
+                var t = $('<input type="button" onclick="'+scr+'" value="Play Again" name="button"/>');
+                $('.playAgain').append(t);
             }
         }
         else {
-            $(e.target).css('background-image', 'url("js/styles/water.png")');
+            $(e.target).css('background-image', 'url("js/styles/water2.jpg")');
             $(e.target).css('background-size', 'contain');
             $(e.target).off('click');
         }

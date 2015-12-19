@@ -7,18 +7,23 @@
     </head>
 
     <body style="text-align: center;">
-    <h1>BATTLE SHIP GAME</h1>
 
-    <div class="namePlayers">
-        <form id="formPlayers" action="game.html" method="get">
-            Size board: <input type="text" name="gameSize" id="size" value=""><br><p></p>
-            Player 1: <input type="text" name="p1Name" id="p1Name" value=""><br><p></p>
-            Player 2: <input type="text" name="p2Name" id="p2Name" value=""><br><p></p>
-        <input type="submit" value="PLAY">
-        </form>
-    </div>
-    <div class="contentPlayers"></div>
+        <h1>BATTLE SHIP GAME</h1>
+        <div class="contentPlayers">
+            <div id="p1" class="player"></div>
+            <div id="p2" class="player"></div>
+        </div>
+        <div class="bsgBox"></div>
+        <div class="contentWinner"></div>
+        <p></p>
+        <div class="playAgain"></div>
+        <!--<form>-->
+            <!--<div align="center">-->
+                <!--<input type="button" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />-->
+            <!--</div>-->
+        <!--</form>-->
     </body>
+
     <script type="application/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>
     <script type="application/javascript" src="js/commonMethods.js"></script>
     <script type="application/javascript" src="js/ship.js"></script>
@@ -26,4 +31,6 @@
     <script type="application/javascript" src="js/shot.js"></script>
     <script type="application/javascript" src="js/player.js"></script>
     <script type="application/javascript" src="js/bsGame.js"></script>
+    <script type="application/javascript" src="js/main.js"></script>
+
 </html>

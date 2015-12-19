@@ -24,7 +24,7 @@ var validatingSizeTable = function()
         flag = isNumber(size);
         if (!flag)
             alert('Insert a correct value please.');
-        if (flag && size < 3) {
+        if (flag && size < 2) {
             alert('The minimum size for table is 3');
             flag = false;
         }
@@ -64,8 +64,4 @@ var validatingCoordinates = function(coordinate, sizetable)
     return number;
 };
 
-var displayWinner = function(winner){
-
-
-};
 

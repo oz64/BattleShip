@@ -22,12 +22,16 @@
 {
     width: 800px;
     display: inline-flex;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
 }
 
 .player
 {
-    width: 400px;
+    width: 395px;
     text-align: center;
+    /*padding: 20px;*/
 }
 
 
@@ -49,6 +53,6 @@ element.style {
 
 .contentWinner
 {
-    margin-top: 420px;
+    margin-top: 450px;
     display: inline-flex;
 }
