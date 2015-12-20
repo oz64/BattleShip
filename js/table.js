@@ -153,7 +153,7 @@ function shotOnTable(e){
 }
 
 Table.prototype.drawTable = function (playerId) {
-    var w = 350;
+    var w = 500;
     var containerStr = '<div id="'+playerId+'" class = "table" style="width: '+w+'px;"></div>';
     var containerEl = $(containerStr); //html element
     for(var i = 0, total = this.sizeTable ; i < total; i++){
@@ -164,8 +164,8 @@ Table.prototype.drawTable = function (playerId) {
         }
     }
     $('.bsgBox').append(containerEl);
-    $('.cell').css('width',w/this.sizeTable-2);
-    $('.cell').css('height',w/this.sizeTable-2);
+    $('.cell').css('width',w/this.sizeTable-3);
+    $('.cell').css('height',w/this.sizeTable-3);
 };
 
 

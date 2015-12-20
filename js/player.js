@@ -29,6 +29,6 @@ var Player = function(id, name, sizeTable){
 };
 
 Player.prototype.insertName = function(id) {
-    $("#p"+id+"").append('<h2>'+ this.name +'</h2>');
+    $("#p"+id+"").append('<h2 style="color: white; align-content: center; padding: 2px;">'+ this.name +'</h2>');
 };
 

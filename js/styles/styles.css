@@ -1,37 +1,50 @@
-
+.body{
+    background-size: 100% 120%;
+    background-image: url("fondo7.jpg");
+}
 .table
 {
-    border: solid blue 3px;
+    /* border: solid white 3px;*/
+     float: left;
+     margin: 22px;
+ }
+
+ .bsgBox
+ {
+     top: 50%;
+     left: 50%;
+     width: auto;
+     height: auto;
+     margin-top: -200px;
+     margin-left: -600px;
+     /*background: #0099FF;*/
+     position: absolute;
+     padding: 10px;
+  }
+#bsgArrow
+{
+    margin-top: 15%;
     float: left;
-    margin: 22px;
-}
+    width:100px;
+    height: 200px;
+    background-size: 100% 100%;
+    /*max-width:200px;*/
 
-.bsgBox
-{
-    top: 50%;
-    left: 50%;
-    width: 800px;
-    height: auto;
-    margin-top: -200px;
-    margin-left: -400px;
-    background: yellowgreen;
-    position: absolute;
 }
+  .contentPlayers
+  {
+      width: 800px;
+      display: inline-flex;
+      position: absolute;
+      left: 50%;
+      margin-left: -400px;
+  }
 
-.contentPlayers
-{
-    width: 800px;
-    display: inline-flex;
-    position: absolute;
-    left: 50%;
-    margin-left: -400px;
-}
-
-.player
-{
-    width: 395px;
-    text-align: center;
-    /*padding: 20px;*/
+  .player
+  {
+      width: 395px;
+      text-align: center;
+      /*padding: 20px;*/
 }
 
 
@@ -39,11 +52,11 @@
 {
     /*display: inline-block;*/
     float: left;
-    background-color: red;
+    /*background-color:#428bca;
     /*width: 20px;
     height: 20px;
     border-style: outset;*/
-    border: solid black 1px;
+    border: solid white 1px;
 }
 
 element.style {
@@ -53,6 +66,42 @@ element.style {
 
 .contentWinner
 {
+
     margin-top: 450px;
     display: inline-flex;
+
+}
+.bg-danger {
+    display: none;
+    font-size: larger;
+    text-transform: uppercase;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    color: #fff;
+    background-color: #d2322d;
+    border-color: #ac2925;
+}
+a.bg-danger:hover {
+    background-color: #e4b9b9;
+}
+.btn-success {
+    color: #fff;
+    font-size: larger;
+    background-color: #428bca;
+    border-color: #4cae4c;
+}
+
+.bg-info {
+    display: none;
+    float: left;
+    text-transform: uppercase;
+    margin-left: 10%;
+    width: 800px;
+    text-align: center;
+    font-size: larger;
+    background-color: #f0ad4e;
+}
+a.bg-info:hover {
+    background-color: #afd9ee;
 }

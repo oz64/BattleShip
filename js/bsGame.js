@@ -19,10 +19,12 @@ var BSGame = function(){
         //var name2 = validatingEmptyField('Insert name for player 2');
         //this.players.push(new Player(0, name1.toUpperCase(), sizeTable));
         //this.players.push(new Player(1, name2.toUpperCase(), sizeTable));
-
+        var arrowB = $('<div id="bsgArrow" class="table"></div>');
         var sizeTable = gameSize;
         this.players.push(new Player(0, p1Name.toUpperCase(), sizeTable));
+        $('.bsgBox').append(arrowB);
         this.players.push(new Player(1, p2Name.toUpperCase(), sizeTable));
+
 
     };
 
@@ -31,23 +33,40 @@ var BSGame = function(){
 BSGame.prototype.getTurn = function (playerId, x, y, e) {
 
     if (this.turn == playerId) {
-        alert('Wrong table.');
+        //alert('Wrong table.');
+        $('#errorMsg').css('padding','5px');
+       // $('#errorMsg').append('INCORRECT PLAYER');
+        $('#errorMsg').show();
         return false;
     }
     else {
+        $('#errorMsg').hide();
+        if(playerId == 1)
+        {
+            $('#bsgArrow').css('background-image', 'url("js/styles/FlechaDerecha.png")');
+            $('#bsgArrow').css('transform', 'rotate(180deg)');
+        }
+        else
+        {
+            $('#bsgArrow').css('background-image', 'url("js/styles/FlechaDerecha.png"');
+            $('#bsgArrow').css('transform', 'rotate(360deg)');
+        }
         if (this.players[playerId].field.shot2ship(x, y)) {
             $(e.target).css('background-image', 'url("js/styles/buque.jpg")');
             $(e.target).css('background-size', 'contain');
             $(e.target).off('click');
 
+
             if (this.players[playerId].isDeadPlayer()) {
                 //alert('PLAYER ' + this.players[this.turn].name + ' WIN...!!!');
                 $('.cell').off('click');
-                var tmp = $('<h2>'+ this.players[this.turn].name + " IS THE WINNER" + '</h2>');
-                $('.contentWinner').append(tmp);
+                $('.winner').css('padding','5px');
+                $('.bg-info').text(this.players[this.turn].name + " IS THE WINNER");
+                $('.bg-info').show();
                 var scr = "location.href='http://localhost:63342/BattleShip/index.html'";
-                var t = $('<input type="button" onclick="'+scr+'" value="Play Again" name="button"/>');
-                $('.playAgain').append(t);
+                var t = '<a class="btn-success" href="http://localhost:63342/BattleShip/index.html" >PLAY AGAIN</a>';
+                $('#winner').append(t);
+                $('.btn-success').show();
             }
         }
         else {

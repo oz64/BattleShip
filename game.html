@@ -6,14 +6,19 @@
         <link rel="stylesheet" href="./js/styles/styles.css">
     </head>
 
-    <body style="text-align: center;">
-
-        <h1>BATTLE SHIP GAME</h1>
+    <body class="body">
+    <div id="errorMsg" class="bg-danger">INCORRECT PLAYER</div>
+    <div id="winner">
+        <div class="bg-info"></div>
+    </div>
+        <h1  style="color: white; text-align: center">BATTLE SHIP GAME</h1>
         <div class="contentPlayers">
             <div id="p1" class="player"></div>
             <div id="p2" class="player"></div>
         </div>
+
         <div class="bsgBox"></div>
+
         <div class="contentWinner"></div>
         <p></p>
         <div class="playAgain"></div>
